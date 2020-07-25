@@ -17,11 +17,7 @@ public class Product {
         this.productPrice = productPrice;
         this.productCategory = productCategory;
         this.productId = counter++;
-        if (productQuantity <= 15) {
-            this.productQuantity = productQuantity;
-        }else {
-            System.out.println("Maximum Quantity is only 15");
-        }
+        this.productQuantity = productQuantity;
 
     }
 
@@ -57,6 +53,10 @@ public class Product {
         this.productDescription = productDescription;
     }
 
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
     public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
@@ -65,15 +65,15 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-        @Override
-        public String toString () {
-            return "Product{" +
-                    "productId=" + productId +
-                    ", productName='" + productName + "\'\n" +
-                    ", productDescription='" + productDescription + "\'\n" +
-                    ", productPrice=" + productPrice +
-                    ", productCategory=" + productCategory +
-                    '}';
-        }
-
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", productName='" + productName + "\'\n" +
+                ", productDescription='" + productDescription + "\'\n" +
+                ", productPrice=" + productPrice +
+                ", productCategory=" + productCategory +
+                ", productQuantity=" + productQuantity +
+                '}';
+    }
 }

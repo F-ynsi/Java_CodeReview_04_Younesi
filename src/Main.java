@@ -99,14 +99,30 @@ public class Main {
         User user4 = new User(90,"evaaa","power", "ff@yahoo", "stephansplats",
                 765, 5587537);
 
-        HashMap<Integer, Product> users = new HashMap<>();
-        users.put(user1.getId(),product1);
-        users.put(user2.getId(),product2);
-        users.put(user3.getId(),product3);
-        users.put(user4.getId(),product4);
+        HashMap<Integer, User> users = new HashMap<>();
+        users.put(user1.getId(),user1);
+        users.put(user2.getId(),user2);
+        users.put(user3.getId(),user3);
+        users.put(user4.getId(),user4);
 
+        for (Integer i : users.keySet()) {
+            System.out.println(users.get(i));
+        }
 
         System.out.println("\n-----------------------------------------------------------");
+
+        System.out.println("--------------------------Purchase process----------------------------------");
+        System.out.println("------------------Shop before purchase--------------------");
+        System.out.println(myShop1);
+        System.out.println("------------------Shop history before purchase--------------------");
+        System.out.println(myShop1.getPurchaseHistory());
+
+        System.out.println("------------------Shop after purchase--------------------");
+        myShop1.sellProduct(product3,user2);
+        System.out.println(myShop1);
+        System.out.println("------------------Shop history after purchase--------------------");
+        System.out.println(myShop1.getPurchaseHistory());
+
 
 
 
