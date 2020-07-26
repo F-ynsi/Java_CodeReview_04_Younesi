@@ -2,48 +2,6 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        /*
-
-        System.out.println("          -------------------------");
-        System.out.println("+---------------------------------------------+");
-        System.out.println("|                                             |");
-        System.out.println("|                  Welcome                    |");
-        System.out.println("|                  to the                     |");
-        System.out.println("|                   Shop                      |");
-        System.out.println("|                                             |");
-        System.out.println("+---------------------------------------------+");
-        System.out.println("           ------------------------");
-
-
-
-        Scanner myScan = new Scanner(System.in);
-        System.out.println("Make a Selection:");
-        System.out.println("Display all products");
-        System.out.println("Menu Point print x");
-        System.out.println("Menu Point print <5");
-        System.out.println("Menu Point print out of stock");
-
-        int menuScan = myScan.nextInt();
-
-        switch(menuScan){
-            case 1:
-                System.out.println("you take 1");
-                break;
-            case 2:
-                System.out.println("you take 2");
-                break;
-            case 3:
-                System.out.println("you take 3");
-                break;
-            case 4:
-                System.out.println("you take 4");
-                break;
-            case 5:
-                System.out.println("you take 5");
-        }
-
-
-         */
 
 
         Product product1 = new Product( "t-Shirt", "the color is red",
@@ -60,6 +18,13 @@ public class Main {
 
         Product product5 = new Product( "ACCESSORY", "the color is gold",
                 60, Category.ACCESSORY,2);
+
+        Product product6 = new Product( "Shirt", "Super cool",
+                33, Category.T_SHIRT,4);
+
+        Product product7 = new Product( "Shirt", "cool",
+                73, Category.T_SHIRT,0);
+
 
 
         HashMap<Integer, Product> myProducts = new HashMap<>();
@@ -79,9 +44,16 @@ public class Main {
         Shop myShop1 = new Shop ("Coriander", "Karsplatz");
         System.out.println(myShop1);
         System.out.println("\n-----------------My shop after adding products------------------");
-        myShop1.addProduct(product3);
-        myShop1.addProduct(product2);
-        myShop1.addProduct(product5);
+        try {
+            myShop1.addProduct(product3);
+            myShop1.addProduct(product2);
+            myShop1.addProduct(product5);
+            myShop1.addProduct(product6);
+            myShop1.addProduct(product7);
+
+        } catch (StockLimitReachedException e) {
+            System.out.println(e.getMessage());
+        }
         System.out.println(myShop1);
 
 
@@ -122,6 +94,27 @@ public class Main {
         System.out.println(myShop1);
         System.out.println("------------------Shop history after purchase--------------------");
         System.out.println(myShop1.getPurchaseHistory());
+
+
+        System.out.println("\n\n------------------Low stock test--------------------");
+
+        myShop1.showLimitedProduct();
+
+
+        System.out.println("\n\n------------------Add max 15 items test - throws StockLimitReachedException--------------------");
+        try {
+            myShop1.addProduct(product3);
+        } catch (StockLimitReachedException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\n\n------------------Testing Menu--------------------");
+        myShop1.showMenu();
+
+
+
+
+
 
 
 
